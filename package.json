@@ -1,0 +1,39 @@
+{
+  "name": "query-parser",
+  "version": "0.0.1",
+  "description": "Parse the query string received into an object",
+  "type": "module",
+  "main": "./dist/query-parser.cjs",
+  "module": "./dist/query-parser.esm.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/query-parser.esm.js",
+      "require": "./dist/query-parser.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run test:run && rm -rf dist && npm run build:types && webpack",
+    "watch:types": "npx tsc -p tsconfig.types.json --watch",
+    "watch": "npx webpack --watch --progress",
+    "build:types": "tsc -p tsconfig.types.json"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "jsdom": "^28.1.0",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
